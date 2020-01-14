@@ -34,6 +34,7 @@ class QuestionsController < ApplicationController
     end
 
     def update
+        @survey = Survey.find(params[:survey_id])
         @question = Question.find(params[:id])
         if @question.update(question_params)
             redirect_to survey_path(@question.survey)
