@@ -1,6 +1,6 @@
 class Answer < ApplicationRecord
-    belongs_to :question, dependent: :destroy
+    belongs_to :question
 
-    validates :title, presence: true
-    validates_length_of :title, maximum: 100
+    validates :content, presence: true
+    validates_length_of :content, maximum: 1000
 end

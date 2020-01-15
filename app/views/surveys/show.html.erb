@@ -3,16 +3,28 @@
 <% if @survey.questions.any? %>
   <h4>Here are the questions for this survey:</h4>
 
+  <ul>
   <% @survey.questions.each do |question| %>
-    <ul>
       <li>
         <%= link_to question.query, survey_question_path(@survey, question) %>
+        <% if question.answers.any? %>
+        <ul>
+          <% question.answers.each do |answer| %>
+              <li>
+                <%= link_to answer.content, survey_question_answer_path(@survey, question, answer) %>
+              </li>
+          <% end %>
+      </ul>
+        <% else %>
+          <p>No answers are listed for this question.</p>
+        <% end %>
       </li>
-    </ul>
   <% end %>
+</ul>
 <% else %>
   <p>No questions are listed for this survey.</p>
 <% end %>
+
 
 <p><%= link_to "Add a question", new_survey_question_path(@survey) %></p>
 

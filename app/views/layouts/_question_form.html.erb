@@ -3,9 +3,5 @@
 <%= form_for [@survey, @question] do |f| %>
     <%= f.label :query %>
     <%= f.text_field :query %>
-    <%= f.label :format %>
-    <%= f.text_area :format %>
-    <%= f.label :choices %>
-    <%= f.text_area :choices %>
     <%= f.submit %>
 <% end %>
